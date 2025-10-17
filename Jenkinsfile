@@ -38,6 +38,8 @@ pipeline {
         stage('deploy') {
             steps {
                 echo "deploy ${params.environnement} "
+                echo "a transferer:"
+                sh "ls -al target/*.jar"
                 sshPublisher(
                     publishers: [
                         sshPublisherDesc(
