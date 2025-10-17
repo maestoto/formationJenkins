@@ -15,7 +15,7 @@ pipeline {
                     userRemoteConfigs: [
                          [ 
                             credentialsId: "${CREDENTIAL_ID}"
-                           url: "${URL}" ]
+                           url: "${URL_GIT}" ]
                      ]
                      ]) 
                 // git branch: 'main',
