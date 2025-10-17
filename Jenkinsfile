@@ -9,16 +9,16 @@ pipeline {
     stages {
         stage('recuperation git') {
             steps {
-                // checkout scm: scmGit(branches: [[name: 'main']],
-                // userRemoteConfigs: [
-                //          [ 
-                //             credentialsId: "${CREDENTIAL_ID}"
-                //            url: "${URL}" ]
-                //      ]) 
-                git branch: 'main',
-                    credentialsId: "${CREDENTIAL_ID}",
-                    changelog: false,
-                    url: "${URL_GIT}"
+                checkout scm: scmGit(branches: [[name: 'main']],
+                userRemoteConfigs: [
+                         [ 
+                            credentialsId: "${CREDENTIAL_ID}"
+                           url: "${URL}" ]
+                     ]) 
+                // git branch: 'main',
+                //     credentialsId: "${CREDENTIAL_ID}",
+                //     changelog: false,
+                //     url: "${URL_GIT}"
                 
                 // affiche les variables de jenkins
                 sh "printenv"
