@@ -1,14 +1,19 @@
 pipeline {
     agent any
 
+    environment {
+        URL = 'https://github.com/maestoto/formationJenkins.git' 
+        CREDENTIAL_ID = "maestoto_formJenkins"
+    }
+
     stages {
         stage('recuperation rgit') {
             steps {
                 checkout scm: scmGit(branches: [[name: 'main']],
                 userRemoteConfigs: [
                          [ 
-                            credentialsId: 'maestoto_formJenkins',
-                           url: 'https://github.com/maestoto/formationJenkins.git' ]
+                            credentialsId: $CREDENTIAL_ID
+                           url: $URL ]
                      ]) 
             }
         }
