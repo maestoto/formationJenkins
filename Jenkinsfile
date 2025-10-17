@@ -42,7 +42,7 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                echo "deploy ${params.environment} "
+                echo "deploy ${params.environnement} "
             }
         }
     }
