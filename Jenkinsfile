@@ -12,9 +12,11 @@ pipeline {
                 checkout scm: scmGit(branches: [[name: 'main']],
                 userRemoteConfigs: [
                          [ 
-                            credentialsId: $CREDENTIAL_ID
-                           url: $URL ]
+                            credentialsId: "${CREDENTIAL_ID}"
+                           url: "${URL}" ]
                      ]) 
+                     // affiche les variables de jenkins
+                     sh "printenv"
             }
         }
         stage('test') {
