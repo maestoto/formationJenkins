@@ -7,8 +7,8 @@ pipeline {
     }
 
     parameters {
-        string(name:"version", description:"")
-        choice(name:"environnement", choice:["test","dev", "prod"]),description:"environement")
+        string(name:"version", description: "version")
+        choice(name:"environnement", choice:["test","dev", "prod"]) , description "environement")
     }
 
     stages {
