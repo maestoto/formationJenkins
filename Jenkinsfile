@@ -9,11 +9,14 @@ pipeline {
     stages {
         stage('recuperation git') {
             steps {
-                checkout scm: scmGit(branches: [[name: 'main']],
-                userRemoteConfigs: [
+                checkout  scm: scmGit([
+                    $class: 'GitSCM',
+                    branches: [[name: 'main']],
+                    userRemoteConfigs: [
                          [ 
                             credentialsId: "${CREDENTIAL_ID}"
                            url: "${URL}" ]
+                     ]
                      ]) 
                 // git branch: 'main',
                 //     credentialsId: "${CREDENTIAL_ID}",
