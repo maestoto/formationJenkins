@@ -38,6 +38,16 @@ pipeline {
         stage('deploy') {
             steps {
                 echo "deploy ${params.environnement} "
+                sshPublisher(
+                    publishers:
+                    configName: "training-server",
+                    sshTransfer(
+                                    sourceFiles: 'target/*.jar',
+                                    remoteDirectory: '/tmp',
+                                    execCommand: 'ls -al'
+                        )
+                    ]
+                )
             }
         }
     }
