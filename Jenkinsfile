@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('recuperation git') {
             steps {
-                checkout  scm: scmGit([
+                checkout ([
                     $class: 'GitSCM',
                     branches: [[name: 'main']],
                     userRemoteConfigs: [
