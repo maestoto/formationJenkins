@@ -39,15 +39,20 @@ pipeline {
             steps {
                 echo "deploy ${params.environnement} "
                 sshPublisher(
-                    publishers:
-                    configName: "training-server",
-                    sshTransfer(
+                    publishers: [
+                        sshPublisherDesc(
+                            configName: 'training-server',  // correspond au Nom de la configuration
+                            transfers: [
+                                sshTransfer(
                                     sourceFiles: 'target/*.jar',
                                     remoteDirectory: '/tmp',
                                     execCommand: 'ls -al'
+                                )
+                            ]
                         )
                     ]
                 )
+              
             }
         }
     }
