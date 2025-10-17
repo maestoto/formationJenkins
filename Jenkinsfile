@@ -19,8 +19,11 @@ pipeline {
                     credentialsId: "${CREDENTIAL_ID}",
                     changelog: false,
                     url: "${URL_GIT}"
-                     // affiche les variables de jenkins
-                     sh "printenv"
+                
+                // affiche les variables de jenkins
+                sh "printenv"
+                sh "chmod +x mvnw"
+                sh "./mvnw clean package spring-boot:repackage -Dmavent.test.skip=true"
             }
         }
         stage('test') {
