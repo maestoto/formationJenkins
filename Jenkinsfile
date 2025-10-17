@@ -46,7 +46,7 @@ pipeline {
                                 sshTransfer(
                                     sourceFiles: 'target/*.jar',
                                     remoteDirectory: '/tmp',
-                                    execCommand: 'ls -al'
+                                    execCommand: 'ls -al /tmp'
                                 )
                             ]
                         )
