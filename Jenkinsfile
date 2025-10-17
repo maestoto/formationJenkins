@@ -16,8 +16,8 @@ pipeline {
             steps {
                 checkout scmGit(
                     branches: [[name: 'main']],
-                    userRemoteConfigs: [[credentialsId: "${URL_GIT}",
-                    url: 'https://github.com/jenkinsci/git-plugin.git']])
+                    userRemoteConfigs: [[credentialsId: "${CREDENTIAL_ID}",
+                    url: "${URL_GIT}"]])
                 // git branch: 'main',
                 //     credentialsId: "${CREDENTIAL_ID}",
                 //     changelog: false,
