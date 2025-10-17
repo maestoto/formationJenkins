@@ -44,6 +44,7 @@ pipeline {
                     publishers: [
                         sshPublisherDesc(
                             configName: 'training-server',  // correspond au Nom de la configuration
+                            verbose: true
                             transfers: [
                                 sshTransfer(
                                     sourceFiles: 'target/*.jar',
