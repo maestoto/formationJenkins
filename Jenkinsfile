@@ -14,19 +14,14 @@ pipeline {
     stages {
         stage('recuperation git') {
             steps {
-                // checkout ([
-                //     $class: 'GitSCM',
-                //     branches: [[name: 'main']],
-                //     userRemoteConfigs: [
-                //          [ 
-                //             credentialsId: "${CREDENTIAL_ID}"
-                //            url: "${URL_GIT}" ]
-                //      ]
-                //      ]) 
-                git branch: 'main',
-                    credentialsId: "${CREDENTIAL_ID}",
-                    changelog: false,
-                    url: "${URL_GIT}"
+                checkout scmGit(
+                    branches: [[name: 'main']],
+                    userRemoteConfigs: [[credentialsId: "${URL_GIT}",
+                    url: 'https://github.com/jenkinsci/git-plugin.git']])
+                // git branch: 'main',
+                //     credentialsId: "${CREDENTIAL_ID}",
+                //     changelog: false,
+                //     url: "${URL_GIT}"
                 
                 // affiche les variables de jenkins
                 sh "printenv"
