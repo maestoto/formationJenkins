@@ -2,19 +2,23 @@ pipeline {
     agent any
 
     environment {
-        URL = 'https://github.com/maestoto/formationJenkins.git' 
+        URL_GIT = 'https://github.com/maestoto/formationJenkins.git' 
         CREDENTIAL_ID = "maestoto_formJenkins"
     }
 
     stages {
-        stage('recuperation rgit') {
+        stage('recuperation git') {
             steps {
-                checkout scm: scmGit(branches: [[name: 'main']],
-                userRemoteConfigs: [
-                         [ 
-                            credentialsId: "${CREDENTIAL_ID}"
-                           url: "${URL}" ]
-                     ]) 
+                // checkout scm: scmGit(branches: [[name: 'main']],
+                // userRemoteConfigs: [
+                //          [ 
+                //             credentialsId: "${CREDENTIAL_ID}"
+                //            url: "${URL}" ]
+                //      ]) 
+                git branch: 'main',
+                    credentialsId: "${CREDENTIAL_ID}",
+                    changelog: false,
+                    url: "${URL_GIT}"
                      // affiche les variables de jenkins
                      sh "printenv"
             }
