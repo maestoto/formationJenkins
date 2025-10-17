@@ -59,4 +59,13 @@ pipeline {
             }
         }
     }
+
+    post {
+        success{
+            echo "youpi"
+        }
+        failure {
+            echo "pas glop"
+        }
+    }
 }
