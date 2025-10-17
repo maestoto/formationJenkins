@@ -6,22 +6,27 @@ pipeline {
         CREDENTIAL_ID = "maestoto_formJenkins"
     }
 
+    parameters {
+        string(name:"version", description:"")
+        choice(name:"environnement", choice:["test","dev", "prod]")
+    }
+
     stages {
         stage('recuperation git') {
             steps {
-                checkout ([
-                    $class: 'GitSCM',
-                    branches: [[name: 'main']],
-                    userRemoteConfigs: [
-                         [ 
-                            credentialsId: "${CREDENTIAL_ID}"
-                           url: "${URL_GIT}" ]
-                     ]
-                     ]) 
-                // git branch: 'main',
-                //     credentialsId: "${CREDENTIAL_ID}",
-                //     changelog: false,
-                //     url: "${URL_GIT}"
+                // checkout ([
+                //     $class: 'GitSCM',
+                //     branches: [[name: 'main']],
+                //     userRemoteConfigs: [
+                //          [ 
+                //             credentialsId: "${CREDENTIAL_ID}"
+                //            url: "${URL_GIT}" ]
+                //      ]
+                //      ]) 
+                git branch: 'main',
+                    credentialsId: "${CREDENTIAL_ID}",
+                    changelog: false,
+                    url: "${URL_GIT}"
                 
                 // affiche les variables de jenkins
                 sh "printenv"
